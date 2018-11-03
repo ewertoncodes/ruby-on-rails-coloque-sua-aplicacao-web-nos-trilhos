@@ -2,13 +2,32 @@
 <html>
 <head>
   <title>Colchonet</title>
+  <link href='http://fonts.googleapis.com/css?family=Pacifico'rel='stylesheet' type='text/css'>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
 <body>
-
-<%= yield %>
+  <header>
+    <div id="header-wrap">
+      <h1><%= link_to "colcho.net", root_path %></h1>
+      <nav>
+        <ul>
+          <li><%= link_to 'Quartos', rooms_path %></li>
+          <li><%= link_to 'Cadastros', new_user_path %></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+  <div id="content">
+    <% if notice.present? %>
+      <p id="notice"><%= notice %> </p>
+    <% end %>
+    <% if alert.present? %>
+      <p id="alert"><%= alert %> </p>
+    <% end %>
+    <%= yield %>
+  </div>
 
 </body>
 </html>
