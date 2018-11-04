@@ -1,11 +1,11 @@
 <h1>
-  Perfil: <%= @user.full_name %>
+  <%= t'.title', user_name: @user.full_name %>
 </h1>
 
 <ul>
-  <li> Localização: <%= @user.location %> </li>
-  <li> Bio: <%=  @user.bio %></li>
+  <li> <%= t'.location', location: @user.location %> </li>
+  <li> <%= t'.bio', bio: @user.bio %> </li>
 </ul>
 
-<%= link_to 'Editar Perfil', edit_user_path(@user) %>
+<%= link_to t('.edit'), edit_user_path(@user) %>
 <%= link_to 'Home', root_path %>
