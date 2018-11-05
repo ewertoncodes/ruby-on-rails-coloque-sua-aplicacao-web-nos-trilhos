@@ -7,4 +7,19 @@ class User < ActiveRecord::Base
   validates_format_of :email, with: EMAIL_REGEXP
 
   has_secure_password
+
+  before_create do |user|
+    user.confirmation_token = SecureRandom.urlsafe_base64
+  end
+  
+  def confirm!
+    return if confirmed?
+    self.confirmation_token = ''
+    self.confirmed_at = DateTime.now
+    save!
+  end
+  
+  def confirmed?
+    self.confirmed_at.present?
+  end  
 end

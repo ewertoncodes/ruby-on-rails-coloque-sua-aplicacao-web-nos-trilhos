@@ -24,6 +24,19 @@ pt-BR:
       description: "Descrição %{description}"
       location: "Localização  %{location}"
       title: "Título %{title}"
+  confirmations:
+    success: Email confirmado com sucesso, obrigado!    
+  signup:
+    confirm_email:
+      subject: 'Colcho.net - Confirme seu email'
+      title: 'Seja bem vindo ao Colcho.net!'
+      body: |
+          Seja bem vindo ao Colcho.net, %{full_name}.
+          O Colcho.net é o lugar ideal para você alugar aquele quarto
+          sobrando na sua casa e ainda conhecer gente do mundo inteiro.
+      confirm_link_html: 'Para você começar a usar o site, acesse o 
+              link: %{link}'
+      thanks_html: 'Obrigado por se cadastrar no %{link}.'      
   links:
     back: Voltar  
   activerecord:
