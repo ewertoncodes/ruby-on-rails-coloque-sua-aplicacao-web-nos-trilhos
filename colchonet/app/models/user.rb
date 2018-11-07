@@ -12,6 +12,8 @@ class User < ActiveRecord::Base
     user.confirmation_token = SecureRandom.urlsafe_base64
   end
   
+  scope :confirmed, ->  { where.not(confirmed_at: nil) }
+  
   def confirm!
     return if confirmed?
     self.confirmation_token = ''
@@ -21,5 +23,9 @@ class User < ActiveRecord::Base
   
   def confirmed?
     self.confirmed_at.present?
-  end  
+  end
+  
+  def	self.authenticate(email,	password)
+    user	=	confirmed.find_by(email:	email).try(:authenticate,	password)
+  end
 end
