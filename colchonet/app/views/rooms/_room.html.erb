@@ -1,0 +1,23 @@
+<article	class="room">
+	<h2><%=	link_to	room.title,	room	%></h2>
+	<span	class="created">
+		<%=	t	'.owner_html',
+			owner:	room.user.full_name,
+			when:	l(room.created_at,	format:	:short)	%>
+	</span>
+	<p>
+		<span	class="location">
+			<%=	link_to	room.location,
+				"https://maps.google.com/?q=#{room.location}",
+				target:	:blank	%>
+		</span>
+	</p>
+	<p><%= room.description	%></p>
+	<% if belongs_to_user(room)	%>
+		<ul>
+			<li><%=	link_to	t('.edit'),	edit_room_path(room)	%></li>
+			<li><%= link_to 'Destroy', room_path(room), method: :delete, data: { confirm: t('dialogs.destroy') } %>
+      </li>
+		</ul>
+	<% end %>
+</article>

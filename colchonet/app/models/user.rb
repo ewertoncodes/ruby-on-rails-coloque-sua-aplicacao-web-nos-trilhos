@@ -1,4 +1,6 @@
 class User < ActiveRecord::Base
+  has_many :rooms
+
   EMAIL_REGEXP = /\A[^@]+@([^@\.]+\.)+[^@\.]+\z/
 
   validates_presence_of :email, :full_name, :location
@@ -16,16 +18,17 @@ class User < ActiveRecord::Base
   
   def confirm!
     return if confirmed?
+
+    self.confirmed_at = Time.current
     self.confirmation_token = ''
-    self.confirmed_at = DateTime.now
     save!
   end
-  
+
   def confirmed?
-    self.confirmed_at.present?
+    confirmed_at.present?
   end
-  
-  def	self.authenticate(email,	password)
-    user	=	confirmed.find_by(email:	email).try(:authenticate,	password)
+
+  def self.authenticate(email, password)
+    confirmed.find_by(email: email).try(:authenticate, password)
   end
 end

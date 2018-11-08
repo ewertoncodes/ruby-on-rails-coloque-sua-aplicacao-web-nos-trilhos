@@ -1,0 +1,11 @@
+@import	"shadow";
+.room	{
+	background-color:	white;
+	padding:	20px	25px;
+	margin-top:	10px;
+	@include	shadow(#ccc,	0,	3px,	6px);
+}
+.room	h2	{
+	display:	inline;
+	a	{	font-size:	1.3em;	}
+}

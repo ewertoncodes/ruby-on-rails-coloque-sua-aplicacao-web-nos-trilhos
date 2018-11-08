@@ -1,9 +1,9 @@
 <h1><%= t('.title') %></h1>
-<% if	@user_session.errors.has_key?	:base	%>
-	<div id="error_explanation">
-		<%=	@user_session.errors[:base].join(',	') %>
+<% if @user_session.errors.has_key? :base %>
+  <div id="error_explanation">
+    <%= @user_session.errors[:base].join(', ') %>
   </div>
-<% end	%>    
+<% end %>   
 
 <%=	form_for	@user_session	do	|f|	%>
   <p>
